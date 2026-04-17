@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario Evento</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Formulario de Evento</h2>
+
+    <form th:action="@{/eventos/guardar}" th:object="${evento}" method="post">
+        <input type="hidden" th:field="*{idEvento}">
+
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" required><br><br>
+
+        <label>Descripción:</label>
+        <input type="text" th:field="*{descripcion}" required><br><br>
+
+        <label>Fecha:</label>
+        <input type="datetime-local" th:field="*{fecha}" required><br><br>
+
+        <label>Capacidad máxima:</label>
+        <input type="number" th:field="*{capacidadMaxima}" required><br><br>
+
+        <label>Activo:</label>
+        <input type="checkbox" th:field="*{activo}"><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a th:href="@{/eventos/listado}">Volver</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Roles</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Roles</h2>
+
+    <a th:href="@{/roles/nuevo}">Nuevo Rol</a> |
+    <a th:href="@{/usuarios/listado}">Usuarios</a> |
+    <a th:href="@{/logout}">Cerrar sesión</a>
+
+    <br><br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="r : ${roles}">
+                <td th:text="${r.idRol}"></td>
+                <td th:text="${r.nombre}"></td>
+                <td>
+                    <a th:href="@{/roles/modificar/{id}(id=${r.idRol})}">Editar</a>
+                    <a th:href="@{/roles/eliminar/{id}(id=${r.idRol})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
